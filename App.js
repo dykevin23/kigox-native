@@ -2,11 +2,23 @@ import { Platform, SafeAreaView } from "react-native";
 import WebView from "react-native-webview";
 
 export default function App() {
-  return Platform.OS === "ios" ? (
-    <SafeAreaView>
-      <WebView source={{ url: "https://kigox.vercel.app" }} />
+  return (
+    <SafeAreaView style={styles.container}>
+      <WebView
+        style={styles.webview}
+        source={{ url: "https://kigox.vercel.app" }}
+      />
     </SafeAreaView>
-  ) : (
-    <WebView source={{ url: "https://kigox.vercel.app" }} />
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    paddingTop: (Platform.OS = "android" ? 25 : 0),
+  },
+  webview: {
+    flex: 1,
+  },
+});
